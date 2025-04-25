@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { AudioVisualizer, AudioVisualizerProps } from "audio-visualizer.js";
+import { AudioVisualizerProps, AudioVisualizer } from "audio-visualizer.js";
 import { Fullscreen, Pause, Play } from "lucide-react";
 import { Card } from "./ui/card";
 
@@ -89,11 +89,6 @@ function VisualizerCard({
     const audioRef = useRef<HTMLAudioElement>(null);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
 
     const togglePlay = () => {
         const audioElement = audioRef.current;
@@ -125,13 +120,11 @@ function VisualizerCard({
             <audio ref={audioRef} src={src} />
             <div className="p-6 h-64 flex items-center justify-center">
                 <div className="group w-full h-full rounded-lg flex items-center justify-center overflow-visible">
-                    {isMounted && (
-                        <AudioVisualizer
-                            audioRef={audioRef}
-                            className="w-full h-full"
-                            {...props}
-                        />
-                    )}
+                    <AudioVisualizer
+                        audioRef={audioRef}
+                        className="w-full h-full"
+                        {...props}
+                    />
                 </div>
             </div>
             <div className="bg-indigo-900/50 p-4 flex gap-2 justify-between items-center">

@@ -2,7 +2,7 @@ import { Transform } from "audio-visualizer.js";
 import { Label } from "../ui/label";
 import { SliderInput } from "../ui/slider-input";
 
-type TransformControlsProps = {
+export type TransformControlsProps = {
     settings: Required<Transform>;
     onChange: (
         field: keyof Transform,
