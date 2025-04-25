@@ -1,3 +1,4 @@
+"use client";
 import { Playground } from "@/components/playground";
 import { Metadata } from "next";
 
